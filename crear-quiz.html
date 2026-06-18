@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>qr quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="index.css">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <div id="paso1">
+        <h1>Elijamos un nombre para el proyecto</h1>
+        <input type="text" id="nombre-proyecto" placeholder="Nombre del proyecto">
+        <button onclick="pasar('paso1', 'paso2')">Continuar</button>
+    </div>
+    <div id="paso2" style="display: none; width: 100vh;">
+        <h1>Ahora, creemos las preguntas</h1>
+        <p>Doble click para eliminar pregunta</p>
+        <p>Para los que suelan pulsar dos veces para abrir, aquí solo hace falta 1 vez para interacuar</p>
+        <div id="preguntas" style="display: flex; max-width: 80vh;">
+            <div id="pregunta1" style="border: 1px solid black; border-radius: 5px; margin: 10px;">
+                <input type="text" id="titulo-pregunta1" placeholder="Título">
+                <ul>
+                    <li><input type="text" id="pregunta-1a" placeholder="A"></li>
+                    <li><input type="text" id="pregunta-1b" placeholder="B"></li>
+                    <li><input type="text" id="pregunta-1c" placeholder="C"></li>
+                    <li><input type="text" id="pregunta-1d" placeholder="D"></li>
+                </ul>
+                <p>Respuesta correcta:</p>
+                <select id="pregunta-1correcta">
+                    <option value="none"></option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+        </div>
+        <button onclick="crearPregunta()">Crear pregunta</button>
+        <button onclick="pasar('paso2', 'paso3')">Continuar</button>
+    </div>
+    <div id="paso3" style="display: none; width: 100vh;">
+        <h1>¿Cuantos participantes hay?</h1>
+        <p>pulsa sobre el participante para eliminarlo de la lista</p>
+        <div id="participantes">
+        </div>
+        <input type="text" id="participante-nuevo" placeholder="Participante nuevo">
+        <button onclick="anadirParticipante(document.getElementById('participante-nuevo').value)">Añadir participante</button>
+        <button onclick="pasar('paso3', 'paso4')">Continuar</button>
+    </div>
+    <script src="disenar-quiz.js"></script>
+    <script>
+        function pasar(a, b) {
+            document.getElementById(a).style.display = "none";
+            document.getElementById(b).style.display = "block";
+        }
+    </script>
+</body>
+</html>
