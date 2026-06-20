@@ -49,7 +49,9 @@ function anadirParticipante(nombre) {
 function obtenerDatos() {
   const preguntas = obtenerPreguntas()
   const participantes = obtenerParticipantes()
+  const nombre = document.getElementById('nombre-proyecto')
   const datosQuiz = {
+        titulo: nombre,
         preguntas: preguntas,
         participantes: participantes
   };
