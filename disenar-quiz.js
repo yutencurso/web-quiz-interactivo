@@ -49,13 +49,20 @@ function anadirParticipante(nombre) {
 function obtenerDatos() {
   const preguntas = obtenerPreguntas()
   const participantes = obtenerParticipantes()
-  const nombre = document.getElementById('nombre-proyecto')
+  const nombre = document.getElementById('nombre-proyecto').value
   const datosQuiz = {
         titulo: nombre,
         preguntas: preguntas,
         participantes: participantes
   };
-  alert(JSON.stringify(datosQuiz, null, 2));
+  const jsonString = JSON.stringify(datosQuiz, null, 2);
+  const blob = new Blob([jsonString], { type: "application/json" });
+  const enlace = document.createElement("a");
+  enlace.href = URL.createObjectURL(blob);
+  enlace.download = nombre + " data.dtquiz"
+  enlace.click();
+  URL.revokeObjectURL(enlace.href)
+  return jsonString
 }
 function obtenerPreguntas() {
     let preguntasData = {};
