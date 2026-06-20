@@ -36,7 +36,7 @@
             </div>
         </div>
         <button onclick="crearPregunta()">Crear pregunta</button>
-        <button onclick="pasar('paso2', 'paso3'); obtenerDatos()">Continuar</button>
+        <button onclick="pasar('paso2', 'paso3')">Continuar</button>
     </div>
     <div id="paso3" style="display: none; width: 100vh;">
         <h1>¿Cuantos participantes hay?</h1>
@@ -46,6 +46,10 @@
         <input type="text" id="participante-nuevo" placeholder="Participante nuevo">
         <button onclick="anadirParticipante(document.getElementById('participante-nuevo').value)">Añadir participante</button>
         <button onclick="pasar('paso3', 'paso4')">Continuar</button>
+    </div>
+    <div id="paso4" style="display: none; width: 100vh;">
+        <h1>Archivo de quiz listo</h1>
+        <button onclick="obtenerDatos()">Preparar y descargar</button>
     </div>
     <script src="disenar-quiz.js"></script>
     <script>
