@@ -5,6 +5,7 @@ function crearPregunta() {
     var preguntasActuales = container.children.length;
     preguntasActuales++;
     const nueva = document.createElement('div');
+    nueva.id = `pregunta${preguntasActuales}`;
     container.addEventListener("dblclick", (e) => {
         const elementoDiv = e.target.closest('div');
         if (elementoDiv) {
@@ -45,8 +46,17 @@ function anadirParticipante(nombre) {
     nuevo.innerHTML = nombre;
     container.appendChild(nuevo);
 }
+function obtenerDatos() {
+  const preguntas = obtenerPreguntas()
+  const participantes = obtenerParticipantes()
+  const datosQuiz = {
+        preguntas: preguntas,
+        participantes: participantes
+  };
+  alert(JSON.stringify(datosQuiz, null, 2));
+}
 function obtenerPreguntas() {
-    let preguntasData = [];
+    let preguntasData = {};
     
     // Suponiendo que sabes cuántas preguntas hay, o puedes usar un contador
     // Si se crean dinámicamente, es mejor buscar por clase, pero usando tu estructura de IDs:
@@ -63,10 +73,26 @@ function obtenerPreguntas() {
             },
             correcta: document.getElementById(`pregunta-${i}correcta`).value
         };
-        
-        preguntasData.push(pregunta);
+        preguntasData[`pregunta${i}`] = pregunta;
         i++; // Pasa a la siguiente pregunta
     }
     console.log(preguntasData);
     return preguntasData;
+}
+function obtenerParticipantes() {
+    let participantesData = {}; // Inicializamos como objeto JSON vacío
+    const contenedor = document.getElementById('participantes');
+    const elementos = contenedor.children;
+    
+    // Recorremos los elementos hijos que agregaste dinámicamente
+    for (let i = 0; i < elementos.length; i++) {
+        let numeroParticipante = i + 1;
+        
+        // Creamos la clave dinámica ("participante1", "participante2"...)
+        // .innerText extrae el nombre visible del elemento
+        participantesData[`participante${numeroParticipante}`] = elementos[i].innerText.trim();
+    }
+    
+    console.log(participantesData);
+    return participantesData;
 }
