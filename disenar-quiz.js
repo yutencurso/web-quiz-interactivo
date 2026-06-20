@@ -45,3 +45,28 @@ function anadirParticipante(nombre) {
     nuevo.innerHTML = nombre;
     container.appendChild(nuevo);
 }
+function obtenerPreguntas() {
+    let preguntasData = [];
+    
+    // Suponiendo que sabes cuántas preguntas hay, o puedes usar un contador
+    // Si se crean dinámicamente, es mejor buscar por clase, pero usando tu estructura de IDs:
+    let i = 1;
+    
+    while (document.getElementById(`pregunta${i}`)) {
+        let pregunta = {
+            titulo: document.getElementById(`titulo-pregunta${i}`).value,
+            opciones: {
+                A: document.getElementById(`pregunta-${i}a`).value,
+                B: document.getElementById(`pregunta-${i}b`).value,
+                C: document.getElementById(`pregunta-${i}c`).value,
+                D: document.getElementById(`pregunta-${i}d`).value,
+            },
+            correcta: document.getElementById(`pregunta-${i}correcta`).value
+        };
+        
+        preguntasData.push(pregunta);
+        i++; // Pasa a la siguiente pregunta
+    }
+    console.log(preguntasData);
+    return preguntasData;
+}
