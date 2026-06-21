@@ -33,6 +33,7 @@ function crearPregunta() {
 }
 function anadirParticipante(nombre) {
     const container = document.getElementById('participantes');
+    document.getElementById('participante-nuevo').value = ''
     var participantesActuales = container.children.length;
     participantesActuales++;
     container.addEventListener("click", (e) => {
