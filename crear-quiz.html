@@ -7,12 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-    <div>
-      <ul>
-        <li>1. Nombre del proyecto</li>
-        <li>2. Preguntas</li>
-        <li>3. Participantes</li>
-      </ul>
+    <div class="cartelFlotante">
+      <p onclick="irA('paso1')">1. Nombre del proyecto</p>
+      <p onclick="irA('paso2')">2. Preguntas</p>
+      <p onclick="irA('paso3')">3. Participantes</p>
+      <p onclick="irA('paso4')">4. Preparar y descargar</p>
     </div>
     <div id="paso1">
         <h1>Elijamos un nombre para el proyecto</h1>
@@ -56,6 +55,7 @@
     </div>
     <div id="paso4" style="display: none; width: 100vh;">
         <h1>Archivo de quiz listo</h1>
+        <p>Tén en cuenta que debes haber hecho los pasos anteriores</p>
         <button onclick="obtenerDatos()">Preparar y descargar</button>
     </div>
     <script src="disenar-quiz.js"></script>
@@ -63,6 +63,15 @@
         function pasar(a, b) {
             document.getElementById(a).style.display = "none";
             document.getElementById(b).style.display = "block";
+        }
+        function irA(paso) {
+          document.getElementById("paso1").style.display = "none";
+          document.getElementById("paso2").style.display = "none";
+          document.getElementById("paso3").style.display = "none";
+          document.getElementById("paso4").style.display = "none";
+          setTimeout(() => {
+            document.getElementById(paso).style.display = "block";
+          }, 100)
         }
     </script>
 </body>
