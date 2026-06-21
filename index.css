@@ -6,6 +6,7 @@ body {
     height: 100vh;
     flex-direction: column;
     margin: 0;
+    overflow-x: none;
 }
 a, button{
     background-color: #00a6ff;
@@ -42,5 +43,14 @@ select{
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
-
+}
+.cartelFlotante{
+  border-radius: 5px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background-color: #00a6ff;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
 }
