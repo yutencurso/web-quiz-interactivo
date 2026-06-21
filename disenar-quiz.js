@@ -56,7 +56,7 @@ function obtenerDatos() {
         participantes: participantes
   };
   const jsonString = JSON.stringify(datosQuiz, null, 2);
-  const blob = new Blob([jsonString], { type: "application/json" });
+  const blob = new Blob([jsonString], { type: "application/octet-" });
   const enlace = document.createElement("a");
   enlace.href = URL.createObjectURL(blob);
   enlace.download = nombre + " data.dquiz"
