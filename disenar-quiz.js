@@ -59,7 +59,7 @@ function obtenerDatos() {
   const blob = new Blob([jsonString], { type: "application/json" });
   const enlace = document.createElement("a");
   enlace.href = URL.createObjectURL(blob);
-  enlace.download = nombre + " data.dtquiz"
+  enlace.download = nombre + " data.dquiz"
   enlace.click();
   URL.revokeObjectURL(enlace.href)
   return jsonString
